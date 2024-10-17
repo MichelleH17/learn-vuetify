@@ -3,5 +3,24 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <RouterView />
+  <v-app>
+    <v-app-bar>
+      <v-toolbar>
+        <v-app-bar-nav-icon></v-app-bar-nav-icon>        
+        <v-toolbar-title>
+          <v-btn to="/" variant="plain">
+            Learn Vuetify 3
+          </v-btn>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        
+        <v-btn to="/login" variant="outlined" color="blue-darken-2" size="small">Login
+        </v-btn>
+      </v-toolbar>
+    </v-app-bar>
+
+    <v-main>
+      <RouterView />
+    </v-main>
+  </v-app>
 </template>
