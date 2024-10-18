@@ -16,6 +16,9 @@ const vuetify = createVuetify({
   directives,
   defaults: {
     VTextField: { variant: "solo"}
+  },
+  theme: {
+    defaultTheme: 'dark',
   }
 })
 

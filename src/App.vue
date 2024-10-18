@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RouterView } from 'vue-router'
+import { useTheme } from 'vuetify';
 
 const notifications = ref([
   { 
@@ -29,6 +30,15 @@ const notifications = ref([
     color: 'yellow'
   }
 ])
+
+const darkTheme = ref(true)
+const theme = useTheme()
+
+function changeTheme() {
+  darkTheme.value = !darkTheme.value
+  theme.global.name.value = darkTheme.value ? 'dark' : 'light'
+}
+
 </script>
 
 <template>
@@ -42,12 +52,16 @@ const notifications = ref([
           </v-btn>
         </v-toolbar-title>
         <v-spacer></v-spacer>
+
+        <v-btn class="mr-2" icon @click="changeTheme">
+          <v-icon :icon="darkTheme ? 'mdi-weather-night' : 'mdi-weather-sunny'" size="large"></v-icon>
+        </v-btn>
         
         <v-menu open-on-hover transition="scale-transition">
           <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" icon class="mr-6">
+            <v-btn v-bind="props" icon class="mr-4">
               <v-badge color="red-darken-2" content="5">
-            <v-icon icon="mdi-bell" color="blue-darken-3"></v-icon>
+            <v-icon icon="mdi-bell" color="blue-darken-3" size="large"></v-icon>
           </v-badge>
         </v-btn>
           </template>
@@ -65,7 +79,7 @@ const notifications = ref([
           </v-list>
         </v-menu>
         
-        <v-btn to="/login" variant="outlined" color="blue-darken-3" size="small">Login
+        <v-btn to="/login" variant="outlined" size="small">Login
         </v-btn>
       </v-toolbar>
     </v-app-bar>
