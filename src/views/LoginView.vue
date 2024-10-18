@@ -9,13 +9,25 @@ const form = ref({
 
 const isLoading = ref(false)
 
-function submit() {
+function submit() {  
+  if (form.value.email === '' || form.value.password === '') {
+    return;
+  }
+  
   isLoading.value = true;
-
   setTimeout(() => {
     isLoading.value = false;
     alert(JSON.stringify(form.value));
   }, 3000);
+}
+
+const rules = {
+  required: (value: any) => !!value || 'Required.',
+  counter: (value: any) => value.length <= 20 || 'Max 20 characters',
+  email: (value: any) => {
+    const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return pattern.test(value) || 'Invalid e-mail.'
+  },
 }
 </script>
 
@@ -34,15 +46,17 @@ function submit() {
         </v-card-item>
         <v-card-text>
           <v-form @submit.prevent="submit">
-            <v-text-field        
-            prepend-inner-icon="mdi-email"
+            <v-text-field            
             v-model="form.email"
+            :rules="[rules.required, rules.email]"        
+            prepend-inner-icon="mdi-email"
             label="Email"
             ></v-text-field>
             <v-text-field
-            type="password"
-            prepend-inner-icon="mdi-key"
             v-model="form.password"
+            type="password"
+            :rules="[rules.required, rules.counter]"
+            prepend-inner-icon="mdi-key"            
             label="Password"
             ></v-text-field>
             <v-checkbox
