@@ -7,9 +7,15 @@ const form = ref({
   remember: false
 })
 
+const isLoading = ref(false)
+
 function submit() {
-  console.log(form.value)
-  alert(JSON.stringify(form.value))
+  isLoading.value = true;
+
+  setTimeout(() => {
+    isLoading.value = false;
+    alert(JSON.stringify(form.value));
+  }, 3000);
 }
 </script>
 
@@ -40,11 +46,17 @@ function submit() {
             color="red-darken-3"
             label="Remember me"
             hide-details
-            ></v-checkbox>
+            ></v-checkbox>            
+            <v-btn variant="elevated" color="red-darken-3" class="mt-2" type="submit" size="large" block>
+              <v-progress-circular v-if="isLoading"
+              color="white"
+              indeterminate
+              ></v-progress-circular>
+              <span v-else>Submit</span>
+            </v-btn>
           </v-form>
         </v-card-text>
-        <v-card-actions class="d-flex flex-column mx-2">
-          <v-btn  variant="elevated" color="red-darken-3" class="mt-2" type="submit" block>Submit</v-btn>
+        <v-card-actions class="d-flex flex-column mx-2">  
           <v-btn to="/register" variant="plain" class="mt-2">Register</v-btn>    
         </v-card-actions>
       </v-card>
