@@ -14,6 +14,9 @@ import * as directives from 'vuetify/directives'
 const vuetify = createVuetify({
   components,
   directives,
+  defaults: {
+    VTextField: { variant: "solo"}
+  }
 })
 
 app.use(router)

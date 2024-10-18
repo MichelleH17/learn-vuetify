@@ -34,15 +34,13 @@ function submit() {
         </v-card-item>
         <v-card-text>
           <v-form @submit.prevent="submit">
-            <v-text-field
-            variant="solo"
+            <v-text-field        
             prepend-inner-icon="mdi-email"
             v-model="form.email"
             label="Email"
             ></v-text-field>
             <v-text-field
             type="password"
-            variant="solo"
             prepend-inner-icon="mdi-key"
             v-model="form.password"
             label="Password"
