@@ -20,6 +20,12 @@ function submit() {
 </script>
 
 <template>
+  <v-overlay :model-value="isLoading" class="align-center justify-center">
+    <v-progress-circular v-if="isLoading"
+      color="white"
+      indeterminate
+    ></v-progress-circular>
+  </v-overlay>
   <v-row justify="center">
     <v-col cols="4">
       <v-card class="pa-4">
@@ -47,16 +53,10 @@ function submit() {
             label="Remember me"
             hide-details
             ></v-checkbox>            
-            <v-btn variant="elevated" color="red-darken-3" class="mt-2" type="submit" size="large" block>
-              <v-progress-circular v-if="isLoading"
-              color="white"
-              indeterminate
-              ></v-progress-circular>
-              <span v-else>Submit</span>
-            </v-btn>
+            <v-btn variant="elevated" color="red-darken-3" class="mt-2" type="submit" size="large" block text="Submit"></v-btn>
           </v-form>
         </v-card-text>
-        <v-card-actions class="d-flex flex-column mx-2">  
+        <v-card-actions class="d-flex flex-column">  
           <v-btn to="/register" variant="plain" class="mt-2">Register</v-btn>    
         </v-card-actions>
       </v-card>
