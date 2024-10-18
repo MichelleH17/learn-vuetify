@@ -20,9 +20,11 @@ import { RouterView } from 'vue-router'
     </v-app-bar>
 
     <v-main>
-      <v-container fluid>
-        <RouterView />
-      </v-container>
+      <v-fade-transition>
+        <v-container fluid>
+          <RouterView />
+        </v-container>
+      </v-fade-transition>
     </v-main>
   </v-app>
 </template>
