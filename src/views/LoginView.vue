@@ -39,7 +39,7 @@ const rules = {
     ></v-progress-circular>
   </v-overlay>
   <v-row justify="center">
-    <v-col cols="4">
+    <v-col cols="12" sm="10" md="6" lg="4">
       <v-card class="pa-4">
         <v-card-item>
           <v-card-title class="pb-4 text-h4 text-center">Login Form</v-card-title>
