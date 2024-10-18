@@ -57,7 +57,7 @@ function changeTheme() {
           <v-icon :icon="darkTheme ? 'mdi-weather-night' : 'mdi-weather-sunny'" size="large"></v-icon>
         </v-btn>
         
-        <v-menu open-on-hover transition="scale-transition">
+        <v-menu transition="scale-transition">
           <template v-slot:activator="{ props }">
             <v-btn v-bind="props" icon class="mr-4">
               <v-badge color="red-darken-2" content="5">
